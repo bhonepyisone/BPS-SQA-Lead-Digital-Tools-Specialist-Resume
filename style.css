@@ -155,7 +155,7 @@ ul li {
     margin-bottom: 5px;
 }
 
-/* Default Links (will be overridden by .icon-button-wrapper a) */
+/* Default Links */
 a {
     color: #007bff; /* Standard blue for links */
     text-decoration: none;
@@ -167,84 +167,68 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Font Awesome Icons (will be overridden by .icon-button-wrapper i) */
+/* Default Font Awesome Icons */
 .fas, .fab {
-    margin-right: 8px;
+    /* No default margin-right here, it's handled by the new holder */
     color: #666;
+    font-size: 1em; /* Reset font size for icons outside holders */
 }
 
-/* New: Styles for the Icon Buttons */
-.icon-button-wrapper {
-    display: inline-flex; /* Use inline-flex to align icon and text and allow sizing */
-    align-items: center; /* Vertically align items in the middle */
+/* New: Styles for the Neumorphic Icon Holders */
+.neumorphic-icon-holder {
+    display: inline-flex; /* Use inline-flex for centering icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 35px; /* Fixed width for a square/circle button */
+    height: 35px; /* Fixed height */
     background: #e0e5ec;
-    border-radius: 10px; /* Rounded corners for the button */
+    border-radius: 50%; /* Make it circular */
     box-shadow: 6px 6px 10px #c2c8d0, -6px -6px 10px #ffffff; /* Outset neumorphic shadow */
-    padding: 8px 12px; /* Padding around the icon and text */
-    margin-bottom: 10px; /* Space between buttons */
     transition: all 0.3s ease; /* Smooth transition for hover effects */
     cursor: pointer; /* Indicates it's clickable */
-    text-decoration: none; /* Remove underline from the wrapper itself */
-    font-size: 0.95em; /* Adjust font size within the button */
-    color: #333; /* Default text color for the button */
+    flex-shrink: 0; /* Prevent it from shrinking */
+    margin-right: 12px; /* Space between the icon button and the text/link */
 }
 
-/* Style for the link inside the button wrapper */
-.icon-button-wrapper a {
-    color: #333; /* Darker text for readability on button */
-    text-decoration: none; /* No underline by default */
-    font-weight: 500;
-    margin-left: 5px; /* Small space between icon and text */
-    flex-grow: 1; /* Allow link text to take up available space */
-}
-
-.icon-button-wrapper a:hover {
-    color: #007bff; /* Highlight link on hover */
-    text-decoration: none; /* Keep no underline for neumorphic feel, or add subtle one if desired */
-}
-
-/* Style for icons inside the button wrapper */
-.icon-button-wrapper i {
+/* Style for icons INSIDE the new holder */
+.neumorphic-icon-holder i {
     color: #666; /* Keep icon color soft */
-    font-size: 1.1em; /* Slightly larger icon */
-    margin-right: 0; /* No margin-right here, space is controlled by a */
+    font-size: 1.1em; /* Adjust icon size within the holder */
+    margin-right: 0; /* Override any default margin-right */
 }
 
-/* Hover effect for the entire button wrapper */
-.icon-button-wrapper:hover {
+/* Hover effect for the icon holder */
+.neumorphic-icon-holder:hover {
     box-shadow: inset 2px 2px 5px #bec4cb, inset -2px -2px 5px #f0f5fa; /* Inset shadow on hover for "pressed" effect */
     background: #d1d9e6; /* Slight background change on hover */
 }
 
-
 /* Specific Section Styling */
-/* Added margin-bottom to left column sections for better separation */
 .contact-info,
 .about-section,
 .education-section,
 .skills-section {
-    margin-bottom: 20px; /* Add space below each of these sections */
-    padding-bottom: 15px; /* Ensure content inside has enough space */
-    border-bottom: 1px dashed #d1d9e6; /* Optional: A subtle dashed line for visual break */
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #d1d9e6;
 }
 
-/* Remove border for the last section to avoid unnecessary line at the bottom */
 .additional-info-section {
-    margin-bottom: 0; /* No margin below the very last section */
-    padding-bottom: 0; /* No extra padding at the bottom */
-    border-bottom: none; /* No border for the very last section */
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
-/* Adjusted: Remove margin-bottom from p tags directly inside .contact-info if they contain icon-button-wrapper */
 .contact-info p {
-    margin-bottom: 5px; /* Reduce space between button-like elements */
+    /* Adjust margin for paragraphs containing icon holders */
+    display: flex; /* Use flexbox to align icon holder and text */
+    align-items: center; /* Vertically align items */
+    margin-bottom: 10px; /* Space between each line of contact info */
 }
 
-/* Ensure the wrapper has enough bottom margin */
-.contact-info p:last-child .icon-button-wrapper {
-    margin-bottom: 0; /* No margin below the very last button */
+.contact-info p:last-child {
+    margin-bottom: 0; /* No margin for the last contact info line */
 }
-
 
 .skills-subheading {
     margin-top: 20px;
@@ -265,24 +249,23 @@ a:hover {
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #d1d9e6; /* Soft separator */
+    border-bottom: 1px solid #d1d9e6;
 }
 
 .header-text {
     flex-grow: 1;
-    text-align: left; /* Align header text to left within its div */
-    padding-right: 20px; /* Space between text and animation */
+    text-align: left;
+    padding-right: 20px;
 }
 
-/* Specific adjustments for main header headings */
 .main-header h1.neumorphic-heading,
 .main-header h2.neumorphic-heading {
-    text-align: left; /* Keep these left-aligned within the header-text div */
-    width: auto; /* Allow width to be natural */
-    display: inline-block; /* Revert to inline-block if needed for proper alignment within the flex item */
+    text-align: left;
+    width: auto;
+    display: inline-block;
     margin-left: 0;
     margin-right: 0;
-    padding: 8px 15px; /* Apply padding */
+    padding: 8px 15px;
 }
 
 
@@ -298,21 +281,21 @@ a:hover {
 }
 
 .robot-animation {
-    flex-shrink: 0; /* Prevent animation from shrinking */
+    flex-shrink: 0;
     background: #e0e5ec;
     border-radius: 50%;
-    padding: 5px; /* Space around the lottie player */
-    box-shadow: inset 3px 3px 7px #c2c8d0, inset -3px -3px 7px #ffffff; /* Inset shadow for animation container */
+    padding: 5px;
+    box-shadow: inset 3px 3px 7px #c2c8d0, inset -3px -3px 7px #ffffff;
 }
 
 .job, .certification-item {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px dashed #d1d9e6; /* Lighter dashed separator for list items */
+    border-bottom: 1px dashed #d1d9e6;
 }
 
 .job:last-child, .certification-item:last-child {
-    border-bottom: none; /* Remove border for the last item in a section */
+    border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -331,24 +314,26 @@ a:hover {
 .recommendation-link {
     margin-top: 10px;
     font-size: 0.95em;
-}
-/* Adjust the specific recommendation link to use the new button style */
-.recommendation-link .icon-button-wrapper {
-    margin-top: 0; /* Reset default margin */
-    margin-bottom: 0; /* Reset default margin for the wrapper within this p tag */
-    display: inline-flex; /* Ensure it stays in line, but acts like a button */
-}
-/* Ensure the p tag itself does not add too much space */
-.recommendation-link {
-    margin-bottom: 0;
-    padding-bottom: 0;
+    display: flex; /* Use flex to align icon holder and link */
+    align-items: center; /* Vertically align them */
+    margin-bottom: 0; /* Remove default p tag margin */
+    padding-bottom: 0; /* Remove default p tag padding */
 }
 
+.recommendation-link a {
+    color: #333; /* Make link text darker for contrast */
+    text-decoration: none;
+    font-weight: 500;
+}
+.recommendation-link a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
 
 .cert-issuer {
     font-size: 0.9em;
     color: #777;
-    margin-top: -5px; /* Adjust spacing */
+    margin-top: -5px;
     margin-bottom: 5px;
 }
 
