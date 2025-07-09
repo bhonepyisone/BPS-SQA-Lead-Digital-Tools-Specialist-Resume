@@ -83,8 +83,7 @@ body {
     transform: scale(1.03); /* Subtle hover effect */
 }
 
-/* NEW: Neumorphic Heading Style */
-/* Applied ONLY to h1, h2, h3 now */
+/* Neumorphic Heading Style */
 h1.neumorphic-heading,
 h2.neumorphic-heading,
 h3.neumorphic-heading {
@@ -119,7 +118,6 @@ h2 {
 
 h3 {
     font-size: 1.3em;
-    /* Styles previously here are now handled by .neumorphic-heading */
     margin-bottom: 15px; /* Standard margin for all h3s */
     color: #444;
 }
@@ -128,9 +126,8 @@ h4 {
     font-size: 1.1em;
     margin-bottom: 8px;
     color: #3a3a3a;
-    /* Re-add specific styles for H4 since they no longer have neumorphic-heading */
-    padding-bottom: 5px; /* A subtle separator, or remove if you prefer no underline */
-    border-bottom: 1px solid #d1d9e6; /* A subtle separator, or remove if you prefer no underline */
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d1d9e6;
 }
 
 h5 {
@@ -158,7 +155,7 @@ ul li {
     margin-bottom: 5px;
 }
 
-/* Links */
+/* Default Links (will be overridden by .icon-button-wrapper a) */
 a {
     color: #007bff; /* Standard blue for links */
     text-decoration: none;
@@ -170,11 +167,55 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Font Awesome Icons */
+/* Font Awesome Icons (will be overridden by .icon-button-wrapper i) */
 .fas, .fab {
     margin-right: 8px;
-    color: #666; /* Match icon color to surrounding text for softness */
+    color: #666;
 }
+
+/* New: Styles for the Icon Buttons */
+.icon-button-wrapper {
+    display: inline-flex; /* Use inline-flex to align icon and text and allow sizing */
+    align-items: center; /* Vertically align items in the middle */
+    background: #e0e5ec;
+    border-radius: 10px; /* Rounded corners for the button */
+    box-shadow: 6px 6px 10px #c2c8d0, -6px -6px 10px #ffffff; /* Outset neumorphic shadow */
+    padding: 8px 12px; /* Padding around the icon and text */
+    margin-bottom: 10px; /* Space between buttons */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Indicates it's clickable */
+    text-decoration: none; /* Remove underline from the wrapper itself */
+    font-size: 0.95em; /* Adjust font size within the button */
+    color: #333; /* Default text color for the button */
+}
+
+/* Style for the link inside the button wrapper */
+.icon-button-wrapper a {
+    color: #333; /* Darker text for readability on button */
+    text-decoration: none; /* No underline by default */
+    font-weight: 500;
+    margin-left: 5px; /* Small space between icon and text */
+    flex-grow: 1; /* Allow link text to take up available space */
+}
+
+.icon-button-wrapper a:hover {
+    color: #007bff; /* Highlight link on hover */
+    text-decoration: none; /* Keep no underline for neumorphic feel, or add subtle one if desired */
+}
+
+/* Style for icons inside the button wrapper */
+.icon-button-wrapper i {
+    color: #666; /* Keep icon color soft */
+    font-size: 1.1em; /* Slightly larger icon */
+    margin-right: 0; /* No margin-right here, space is controlled by a */
+}
+
+/* Hover effect for the entire button wrapper */
+.icon-button-wrapper:hover {
+    box-shadow: inset 2px 2px 5px #bec4cb, inset -2px -2px 5px #f0f5fa; /* Inset shadow on hover for "pressed" effect */
+    background: #d1d9e6; /* Slight background change on hover */
+}
+
 
 /* Specific Section Styling */
 /* Added margin-bottom to left column sections for better separation */
@@ -194,22 +235,23 @@ a:hover {
     border-bottom: none; /* No border for the very last section */
 }
 
-.contact-info p,
-.about-section p,
-.education-section p,
-.skills-section p,
-.additional-info-section p {
-    margin-bottom: 8px;
+/* Adjusted: Remove margin-bottom from p tags directly inside .contact-info if they contain icon-button-wrapper */
+.contact-info p {
+    margin-bottom: 5px; /* Reduce space between button-like elements */
 }
 
-/* Adjusted for the .neumorphic-heading class */
-/* This specific class for h4 should still be styled as a standard h4 now */
+/* Ensure the wrapper has enough bottom margin */
+.contact-info p:last-child .icon-button-wrapper {
+    margin-bottom: 0; /* No margin below the very last button */
+}
+
+
 .skills-subheading {
     margin-top: 20px;
     font-weight: bold;
     color: #444;
-    border-bottom: 1px solid #d1d9e6; /* Re-add border if desired for this H4 */
-    padding-bottom: 5px; /* Re-add padding if desired for this H4 */
+    border-bottom: 1px solid #d1d9e6;
+    padding-bottom: 5px;
 }
 
 .soft-skills {
@@ -233,7 +275,6 @@ a:hover {
 }
 
 /* Specific adjustments for main header headings */
-/* These still retain neumorphic-heading, so their styles are kept */
 .main-header h1.neumorphic-heading,
 .main-header h2.neumorphic-heading {
     text-align: left; /* Keep these left-aligned within the header-text div */
@@ -291,6 +332,18 @@ a:hover {
     margin-top: 10px;
     font-size: 0.95em;
 }
+/* Adjust the specific recommendation link to use the new button style */
+.recommendation-link .icon-button-wrapper {
+    margin-top: 0; /* Reset default margin */
+    margin-bottom: 0; /* Reset default margin for the wrapper within this p tag */
+    display: inline-flex; /* Ensure it stays in line, but acts like a button */
+}
+/* Ensure the p tag itself does not add too much space */
+.recommendation-link {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 
 .cert-issuer {
     font-size: 0.9em;
