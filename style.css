@@ -177,6 +177,23 @@ a:hover {
 }
 
 /* Specific Section Styling */
+/* Added margin-bottom to left column sections for better separation */
+.contact-info,
+.about-section,
+.education-section,
+.skills-section {
+    margin-bottom: 20px; /* Add space below each of these sections */
+    padding-bottom: 15px; /* Ensure content inside has enough space */
+    border-bottom: 1px dashed #d1d9e6; /* Optional: A subtle dashed line for visual break */
+}
+
+/* Remove border for the last section to avoid unnecessary line at the bottom */
+.additional-info-section {
+    margin-bottom: 0; /* No margin below the very last section */
+    padding-bottom: 0; /* No extra padding at the bottom */
+    border-bottom: none; /* No border for the very last section */
+}
+
 .contact-info p,
 .about-section p,
 .education-section p,
