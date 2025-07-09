@@ -1,279 +1,260 @@
-/* --- Google Font --- */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-
-/* --- Global Styles --- */
 body {
-    font-family: 'Lato', sans-serif;
-    background-color: #f0f2f5;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #e0e5ec; /* Neumorphic base background */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    align-items: flex-start; /* Align to top for longer content */
+    min-height: 100vh; /* Ensure it covers at least the full viewport height */
+    padding: 30px 20px; /* Add padding for content not to stick to edges */
+    box-sizing: border-box; /* Include padding in element's total width and height */
 }
 
-a {
-    color: inherit; /* Links will have the same color as the parent text */
-    text-decoration: none; /* No underlines */
+.container {
+    background: #e0e5ec;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 30px #c2c8d0, -10px -10px 30px #ffffff; /* Main neumorphic shadow */
+    width: 95%; /* Responsive width */
+    max-width: 1200px; /* Max width for large screens */
+    margin: 0 auto; /* Center the container */
+    display: block; /* Allows content to flow naturally */
 }
 
-a:hover {
-    text-decoration: underline; /* Underline on hover for clarity */
-}
-
-/* --- Resume Container --- */
 .resume-container {
     display: flex;
-    width: 100%;
-    max-width: 900px;
-    min-height: 1100px;
-    background-color: #ffffff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    gap: 30px; /* Space between columns */
 }
 
-/* --- Left Column --- */
+.left-column, .right-column {
+    background: #e0e5ec; /* Inherit from container, or give slight inset if desired */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: inset 2px 2px 5px #bec4cb, inset -2px -2px 5px #f0f5fa; /* Soft inset shadow for columns */
+}
+
 .left-column {
-    background-color: #2c3e50; /* Dark blue-gray from your resume */
-    color: #ffffff;
-    padding: 30px;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
+    flex: 1; /* Allows left column to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+    max-width: 350px; /* Max width for the left column */
 }
 
+.right-column {
+    flex: 2; /* Allows right column to grow more */
+    min-width: 400px; /* Minimum width before wrapping */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .resume-container {
+        flex-direction: column; /* Stack columns vertically on small screens */
+    }
+    .left-column, .right-column {
+        min-width: unset; /* Remove min-width to allow full width */
+        max-width: 100%; /* Take full width */
+    }
+    .container {
+        padding: 20px;
+    }
+}
+
+
+/* --- Existing and Adapted Styles for Content --- */
+
+/* Profile Picture */
 .profile-pic-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .profile-pic {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    border: 5px solid #34495e;
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;
+    border: 5px solid #e0e5ec; /* Matches background for a seamless look */
+    box-shadow: 6px 6px 12px #c2c8d0, -6px -6px 12px #ffffff; /* Neumorphic shadow for image */
+    transition: transform 0.3s ease;
 }
 
-.left-column h3 {
-    color: #ffffff;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    font-weight: 700;
+.profile-pic:hover {
+    transform: scale(1.03); /* Subtle hover effect */
 }
 
-.contact-info p, .about-section p, .education-section p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+/* Headers and Titles */
+h1, h2, h3, h4, h5 {
+    color: #333; /* Darker text for readability */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-.contact-info i {
-    color: #3498db;
-    margin-right: 10px;
-    width: 20px;
+h1 {
+    font-size: 2.2em;
     text-align: center;
-}
-
-.skills-section ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.skills-section li {
-    background-color: #34495e;
-    color: #ffffff;
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
-
-
-/* --- Right Column --- */
-.right-column {
-    padding: 40px;
-    width: 65%;
-}
-
-.main-header {
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.main-header h1 {
-    margin: 0;
-    font-size: 2.8rem;
-    color: #2c3e50;
-    font-weight: 900;
-}
-
-.main-header h2 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    font-weight: 400;
-}
-
-.right-column h3 {
-    font-size: 1.6rem;
-    color: #34495e;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 5px;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-.job {
-    margin-bottom: 25px;
-}
-
-.job-meta {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    color: #34495e;
     margin-bottom: 5px;
 }
 
-.job h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.2rem;
-    color: #2c3e50;
-}
-
-.job h5 {
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
-    color: #2c3e50;
-    font-style: normal;
-    font-weight: 700;
-}
-
-.job ul {
-    padding-left: 20px;
-    margin: 0;
-}
-
-.job li {
-    margin-bottom: 8px;
-    line-height: 1.6;
-    color: #333;
-}
-
-.certifications-section {
-    margin-top: 30px;
-}
-
-.certifications-section p {
-    line-height: 1.6;
-    color: #333;
-}
-
-/* --- Responsive Design for smaller screens --- */
-@media (max-width: 800px) {
-    .resume-container {
-        flex-direction: column;
-    }
-    .left-column, .right-column {
-        width: 100%;
-        box-sizing: border-box; /* Ensures padding is included in the width */
-    }
-    .main-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .main-header h1 {
-        font-size: 2.2rem;
-    }
-    .robot-animation {
-        margin-top: 15px;
-    }
-}
-/* --- Certification Section Styles --- */
-.certification-item {
+h2 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #555;
     margin-bottom: 20px;
 }
 
-.certification-item h4 {
-    margin: 0 0 5px 0;
-    font-size: 1.2rem;
-    color: #2c3e50;
+h3 {
+    font-size: 1.3em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #d1d9e6; /* Soft separator */
+    margin-bottom: 15px;
+    color: #444;
 }
 
-.certification-item h4 a:hover {
+h4 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #3a3a3a;
+}
+
+h5 {
+    font-size: 1em;
+    font-weight: normal;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* General Paragraph and List Styling */
+p, ul {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 25px;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+/* Links */
+a {
+    color: #007bff; /* Standard blue for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
     text-decoration: underline;
 }
 
-.cert-issuer {
-    margin: 0 0 8px 0;
+/* Font Awesome Icons */
+.fas, .fab {
+    margin-right: 8px;
+    color: #666; /* Match icon color to surrounding text for softness */
+}
+
+/* Specific Section Styling */
+.contact-info p,
+.about-section p,
+.education-section p,
+.skills-section p,
+.additional-info-section p {
+    margin-bottom: 8px;
+}
+
+.skills-subheading {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: none; /* No border for subheading */
+    padding-bottom: 0;
+}
+
+.soft-skills {
     font-style: italic;
     color: #555;
 }
 
-.cert-desc {
-    margin: 0;
-    line-height: 1.6;
-    color: #333;
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d1d9e6; /* Soft separator */
 }
-/* --- Recommendation Link Styles --- */
-.recommendation-link {
-    margin-top: 12px;
-    font-size: 0.95rem;
+
+.header-text {
+    flex-grow: 1;
+    text-align: left; /* Align header text to left within its div */
+    padding-right: 20px; /* Space between text and animation */
+}
+
+.main-header h1 {
+    text-align: left; /* Override center alignment for main header name */
+    font-size: 2.8em;
+    margin-bottom: 0;
+}
+
+.main-header h2 {
+    text-align: left; /* Override center alignment for main header title */
+    font-size: 1.6em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.robot-animation {
+    flex-shrink: 0; /* Prevent animation from shrinking */
+    background: #e0e5ec;
+    border-radius: 50%;
+    padding: 5px; /* Space around the lottie player */
+    box-shadow: inset 3px 3px 7px #c2c8d0, inset -3px -3px 7px #ffffff; /* Inset shadow for animation container */
+}
+
+.job, .certification-item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #d1d9e6; /* Lighter dashed separator for list items */
+}
+
+.job:last-child, .certification-item:last-child {
+    border-bottom: none; /* Remove border for the last item in a section */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.job-meta {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.job-date {
     font-weight: bold;
-}
-.recommendation-link a {
-    color: #3498db; /* Blue color from your theme */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.recommendation-link a:hover {
-    color: #2980b9; /* A darker blue on hover */
-    text-decoration: underline;
-}
-.recommendation-link i {
-    margin-right: 6px;
-}
-/* --- Soft Skills Styles in Left Column --- */
-.skills-subheading {
-    margin-top: 25px;
-    margin-bottom: 8px;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 1.1rem;
+    color: #555;
 }
 
-.soft-skills {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #ecf0f1;
-    font-style: italic;
-    margin: 0;
-}
-/* --- Styles for Additional Info in Left Column --- */
-.left-column .additional-info-section {
-    margin-top: 20px;
+.recommendation-link {
+    margin-top: 10px;
+    font-size: 0.95em;
 }
 
-.left-column .additional-info-section h3 {
-    color: #ffffff;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    font-weight: 700;
+.cert-issuer {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: -5px; /* Adjust spacing */
+    margin-bottom: 5px;
 }
 
-.left-column .additional-info-section p {
-    font-style: italic;
-    color: #ecf0f1;
-}
-
-.left-column .additional-info-section strong {
-    color: #ffffff;
-    font-style: normal; /* Keep labels non-italic */
+.cert-desc {
+    font-size: 0.95em;
+    color: #444;
 }
