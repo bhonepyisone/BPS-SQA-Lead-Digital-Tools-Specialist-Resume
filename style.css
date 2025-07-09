@@ -84,9 +84,9 @@ body {
 }
 
 /* Neumorphic Heading Style */
-/* Now applied to specific elements or spans within them */
+/* This now applies to h3 and any span with this class */
 h3.neumorphic-heading,
-span.neumorphic-heading { /* Added span.neumorphic-heading */
+.neumorphic-heading { /* Changed from span.neumorphic-heading to just .neumorphic-heading for broader application */
     background: #e0e5ec;
     border-radius: 10px; /* Softer rounded corners */
     box-shadow: 6px 6px 10px #c2c8d0, -6px -6px 10px #ffffff; /* Outset shadow for button-like effect */
@@ -106,27 +106,30 @@ span.neumorphic-heading { /* Added span.neumorphic-heading */
 
 /* Headers and Titles - Adjusted for .neumorphic-heading */
 h1 {
-    font-size: 2.2em;
+    font-size: 2.8em; /* Default large font for H1 */
     margin-bottom: 5px; /* Default margin for H1 */
     text-align: left; /* Ensure the H1 itself doesn't force center alignment if the span is inline-block */
     color: #333; /* Default color for H1 */
 }
 
-/* Specific styling for the neumorphic span within H1 */
-h1 .neumorphic-heading {
-    font-size: 1.2em; /* Adjust font size relative to H1's default */
-    display: inline-block; /* Allow the span to sit inline within the H1 */
-    padding: 8px 15px; /* Maintain button padding */
-    margin: 0; /* Remove extra margin from the span itself */
-    line-height: 1.2; /* Adjust line height for better button text centering */
-}
-
-
 h2 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: #555;
     margin-bottom: 20px;
     text-align: left; /* Ensure H2 remains left-aligned */
+    /* If h2 has .neumorphic-heading, these will be overridden by .neumorphic-heading rules */
+}
+
+/* Specific adjustment for h2 when it has the neumorphic-heading class */
+h2.neumorphic-heading {
+    font-size: 1.3em; /* Slightly smaller font size for the button-like H2 */
+    margin-top: 5px; /* Adjust spacing above the button H2 */
+    margin-bottom: 20px; /* Ensure space below the button H2 */
+    line-height: 1.2; /* Adjust line height for better button text centering */
+    display: inline-block; /* Ensure it behaves like a button */
+    text-align: left; /* Align within its container, or remove if you want it centered */
+    margin-left: auto; /* For centering if it's the only element in header-text */
+    margin-right: auto;
 }
 
 h3 {
@@ -269,20 +272,20 @@ a:hover {
     padding-right: 20px;
 }
 
-/* Removed specific neumorphic-heading styles from h1 and h2 within .main-header,
-   now it's applied to the span inside h1. */
+/* Ensure H1 in main-header is regular */
 .main-header h1 {
-    /* Styles are mostly handled by the span.neumorphic-heading inside */
-    font-size: 2.8em; /* Default large font for H1 */
+    font-size: 2.8em;
     margin-bottom: 0;
+    text-align: left; /* Keep it left-aligned */
 }
 
-.main-header h2 {
-    /* No neumorphic style, back to regular H2 */
-    font-size: 1.6em;
-    color: #666;
-    margin-top: 5px;
-    margin-bottom: 0; /* Adjust spacing to be closer to H1 */
+/* Ensure H2 in main-header, when it has the neumorphic-heading class, aligns and styles correctly */
+.main-header h2.neumorphic-heading {
+    text-align: left; /* Align button H2 to the left */
+    width: fit-content; /* Make the background only as wide as the text */
+    margin-left: 0; /* Remove auto margins to keep it left-aligned */
+    margin-right: auto;
+    display: inline-block; /* Ensure it behaves like a button */
 }
 
 
