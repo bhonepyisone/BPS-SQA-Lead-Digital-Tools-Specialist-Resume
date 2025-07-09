@@ -83,31 +83,54 @@ body {
     transform: scale(1.03); /* Subtle hover effect */
 }
 
-/* Headers and Titles */
-h1, h2, h3, h4, h5 {
-    color: #333; /* Darker text for readability */
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 600;
+/* NEW: Neumorphic Heading Style */
+.neumorphic-heading {
+    background: #e0e5ec;
+    border-radius: 10px; /* Softer rounded corners */
+    box-shadow: 6px 6px 10px #c2c8d0, -6px -6px 10px #ffffff; /* Outset shadow for button-like effect */
+    padding: 8px 15px; /* Padding inside the "button" */
+    display: inline-block; /* Essential to make padding/width apply correctly */
+    margin-bottom: 15px; /* Space below the heading */
+    color: #333; /* Ensure text color is readable */
+    font-weight: 600; /* Keep bold */
+    text-align: center; /* Center text within the button */
+    /* Remove conflicting styles from generic h tags that would apply borders or specific margins */
+    border-bottom: none !important; /* Override any existing border-bottom */
+    padding-bottom: 8px !important; /* Override specific padding-bottom */
+    width: auto; /* Allow width to adjust to content */
+    box-sizing: border-box; /* Include padding in dimensions */
+}
+
+/* Headers and Titles - Adjusted for .neumorphic-heading */
+h1.neumorphic-heading,
+h2.neumorphic-heading,
+h3.neumorphic-heading,
+h4.neumorphic-heading {
+    text-align: center; /* Ensure all headings with this class are centered */
+    margin-left: auto; /* Center block elements */
+    margin-right: auto; /* Center block elements */
+    width: fit-content; /* Make the background only as wide as the text */
+    display: block; /* Make them block-level to center and take full width for the background */
+    margin-top: 0; /* Remove top margin if unnecessary */
 }
 
 h1 {
     font-size: 2.2em;
-    text-align: center;
+    /* text-align: center;  Moved to .neumorphic-heading */
     margin-bottom: 5px;
 }
 
 h2 {
     font-size: 1.5em;
-    text-align: center;
+    /* text-align: center; Moved to .neumorphic-heading */
     color: #555;
     margin-bottom: 20px;
 }
 
 h3 {
     font-size: 1.3em;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #d1d9e6; /* Soft separator */
+    /* padding-bottom: 8px; */
+    /* border-bottom: 1px solid #d1d9e6; */ /* Handled by .neumorphic-heading */
     margin-bottom: 15px;
     color: #444;
 }
@@ -170,12 +193,13 @@ a:hover {
     margin-bottom: 8px;
 }
 
-.skills-subheading {
+/* Adjusted for the .neumorphic-heading class */
+.skills-subheading.neumorphic-heading {
     margin-top: 20px;
     font-weight: bold;
     color: #444;
-    border-bottom: none; /* No border for subheading */
-    padding-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 8px; /* Maintain padding for this specific heading */
 }
 
 .soft-skills {
@@ -198,14 +222,24 @@ a:hover {
     padding-right: 20px; /* Space between text and animation */
 }
 
+/* Specific adjustments for main header headings */
+.main-header h1.neumorphic-heading,
+.main-header h2.neumorphic-heading {
+    text-align: left; /* Keep these left-aligned within the header-text div */
+    width: auto; /* Allow width to be natural */
+    display: inline-block; /* Revert to inline-block if needed for proper alignment within the flex item */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 8px 15px; /* Apply padding */
+}
+
+
 .main-header h1 {
-    text-align: left; /* Override center alignment for main header name */
     font-size: 2.8em;
     margin-bottom: 0;
 }
 
 .main-header h2 {
-    text-align: left; /* Override center alignment for main header title */
     font-size: 1.6em;
     color: #666;
     margin-top: 5px;
